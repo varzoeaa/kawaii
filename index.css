@@ -1,0 +1,282 @@
+body {
+  margin: 0;
+  background: #181824;
+  color: #fff;
+  font-family: 'Quicksand', 'Comic Sans MS', cursive, sans-serif;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 24px;
+}
+
+.title h2 {
+  display: inline-block;
+  background: linear-gradient(90deg, #ffb6f9 0%, #ff6ec7 100%);
+  color: #181824;
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  border-radius: 24px;
+  padding: 18px 38px 18px 38px;
+  box-shadow: 0 4px 32px #ff6ec799, 0 1px 0 #fff8;
+  border: 3px solid #fff6;
+  position: relative;
+  z-index: 20;
+  text-shadow: 0 2px 8px #fff8, 0 0 2px #ff6ec7;
+}
+
+.container {
+  position: relative;
+  width: 320px; 
+  height: 480px; 
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  width: 180px;
+  height: 240px;
+  perspective: 1000px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transition: transform 0.3s;
+  filter: drop-shadow(0 4px 16px #ffb6f966);
+}
+
+.card[data-index="2"] { z-index: 2; transform: translate(8px, 8px); }
+.card[data-index="3"] { z-index: 3; transform: translate(16px, 16px); }
+.card[data-index="4"] { z-index: 4; transform: translate(24px, 24px); }
+.card[data-index="5"] { z-index: 5; transform: translate(32px, 32px); }
+.card[data-index="5"]:hover {
+  transform: translate(32px, 32px) scale(1.05) rotate(-2deg);
+  z-index: 10;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.card-front {
+  background: linear-gradient(135deg, #ffb6f9 0%, #ff6ec7 100%);
+  color: #fff;
+  font-size: 36px;
+  font-weight: bold;
+  border-radius: 16px;
+  border: 3px solid #fff6;
+  box-shadow: 0 2px 16px #ff6ec799;
+  text-shadow: 0 2px 8px #fff8, 0 0 2px #ff6ec7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-back {
+  background: #fff;
+  color: #ff6ec7;
+  font-size: 16px;
+  border-radius: 16px;
+  border: 3px solid #ffb6f9;
+  box-shadow: 0 2px 16px #ffb6f999;
+  text-align: center;
+  padding: 18px;
+  font-weight: 600;
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.side-container {
+  position: absolute;
+  top: 550px;     
+  left: 800px;
+  width: 320px;    
+  height: 240px;   
+  display: block;
+}
+
+.side-container .card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  z-index: 1;
+  transition: transform 0.3s;
+}
+
+.sparkle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 60%, #ff6ec7 100%);
+  box-shadow: 0 0 8px 2px #fff6, 0 0 16px 4px #ff6ec7aa;
+  opacity: 1;
+  transition: 
+    transform 0.7s cubic-bezier(.22,1.5,.36,1),
+    opacity 0.7s;
+  z-index: 9999;
+}
+
+.title h2::after {
+  content: "♡";
+  color: #ff6ec7;
+  font-size: 2.2rem;
+  margin-left: 18px;
+  vertical-align: middle;
+  filter: drop-shadow(0 0 8px #ffb6f9);
+}
+
+.kawaii-bear {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+.kawaii-bear video {
+  width: 100px;
+  height: auto;
+  border-radius: 24px;
+  box-shadow: 0 4px 24px #ffb6f9aa;
+  background: transparent;
+}
+
+.kawaii-figures {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.kawaii-unit {
+  position: absolute;
+  z-index: 0;
+  animation: kawaii-float 3s ease-in-out infinite;
+  opacity: 0.9;
+}
+
+.kawaii-unit video {
+  width: 80px;
+  height: auto;
+  border-radius: 24px;
+  box-shadow: 0 4px 24px #ffb6f9aa;
+  background: transparent;
+}
+
+.kawaii-unit.top-left    { top: 300px; left: 200px; animation-delay: 0s; }
+.kawaii-unit.top-center  { top: 40px; left: 47%; transform: translateX(-50%); animation-delay: 0.4s; }
+.kawaii-unit.top-right   { top: 500px; right: 600px; animation-delay: 0.8s; }
+.kawaii-unit.bottom-right { bottom: 40px; right: 1200px; animation-delay: 1.2s; }
+
+.kawaii-center {
+  width: 100px;
+  margin: 0 10px;
+  z-index: 2;
+  filter: drop-shadow(0 0 16px #fff8);
+  animation: kawaii-float 3s ease-in-out infinite;
+}
+.kawaii-left {
+  margin-right: -10px;
+  animation: kawaii-float 3s ease-in-out infinite;
+  animation-delay: 0.2s;
+}
+
+.kawaii-right {
+  margin-left: -10px;
+  animation: kawaii-float 3s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+
+.kawaii-right2 {
+  margin-left: -20px;
+  animation: kawaii-float 3s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.kawaii-side {
+  opacity: 0.95;
+  filter: drop-shadow(0 0 8px #ffb6f9cc);
+  z-index: 1;
+}
+
+.kawaii-left { margin-right: -10px; }
+.kawaii-right { margin-left: -10px; }
+.kawaii-right2 { margin-left: -20px; }
+
+@keyframes kawaii-float {
+  0%, 100% { transform: translateY(0) scale(1);}
+  50% { transform: translateY(-10px) scale(1.04);}
+}
+
+audio {
+  display: none;
+}
+
+.kawaii-btn {
+  font-size: 1.5rem;
+  padding: 14px 36px;
+  margin: 0 18px;
+  border-radius: 24px;
+  border: none;
+  background: linear-gradient(90deg, #ffb6f9 0%, #ff6ec7 100%);
+  color: #181824;
+  font-weight: bold;
+  box-shadow: 0 4px 24px #ffb6f9aa;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.kawaii-btn:hover {
+  transform: scale(1.08) rotate(-2deg);
+  box-shadow: 0 8px 32px #ff6ec7cc;
+}
+
+#end-buttons {
+  display: none;
+  position: absolute;
+  top: 40%; 
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 50;
+}
+
